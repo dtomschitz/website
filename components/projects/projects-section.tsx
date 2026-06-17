@@ -62,10 +62,10 @@ const projects: Project[] = [
 const Projects = () => {
   return (
     <Card className="mb-6">
-      <CardHeader className="pb-4 sm:pb-4">
+      <CardHeader>
         <CardTitle>Projects</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col px-0 pb-4 sm:px-0 sm:pb-4">
+      <CardContent className="flex flex-col px-0">
         {projects.map((p, index) => (
           <ProjectListItem key={`project_${index}`} project={p} />
         ))}

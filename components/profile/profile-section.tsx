@@ -10,7 +10,7 @@ import SocialConnections from './social-connections';
 const ProfileSection = () => {
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent>
         <div className="flex flex-col items-start gap-2 ">
           <div className="w-full flex flex-row justify-between items-top ">
             <div className="flex flex-row md:flex-col items-center md:items-start w-full gap-4">

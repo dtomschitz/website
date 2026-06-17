@@ -77,7 +77,7 @@ const SkillBadge = ({skill, ...props}: Props) => {
 
   return (
     <Badge key={skill} variant="secondary" {...props}>
-      {icon && <span className="mr-2">{icon}</span>}
+      {icon}
       {skill}
     </Badge>
   );

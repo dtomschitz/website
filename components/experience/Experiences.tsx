@@ -124,7 +124,7 @@ const Experiences = () => {
       <CardHeader>
         <CardTitle>Work Experience</CardTitle>
       </CardHeader>
-      <CardContent className="pt-6">
+      <CardContent>
         <ul className="space-y-4 sm:space-y-6">
           {experiences.map((experience, i) => (
             <ExperienceListItem key={i} experience={experience} />

@@ -5,14 +5,17 @@ import {LucideIcon} from 'lucide-react';
 import {cn} from '@/lib/utils';
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-md border px-2 py-0.5 text-sm font-semibold transition-colors focus:outline-none',
+  'inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3',
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-primary text-primary-foreground',
-        secondary: 'border-transparent bg-secondary text-secondary-foreground',
-        destructive: 'border-transparent bg-destructive text-destructive-foreground',
-        outline: 'text-foreground',
+        default: 'bg-primary text-primary-foreground [a&]:hover:bg-primary/90',
+        secondary: 'bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90',
+        destructive:
+          'bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90',
+        outline: 'border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
+        ghost: '[a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
+        link: 'text-primary underline-offset-4 [a&]:hover:underline',
       },
       state: {
         default: '',
@@ -38,36 +41,23 @@ export interface BadgeProps extends VariantProps<typeof badgeVariants> {
   target?: string;
 }
 
-function Badge({className, variant, state, children, ...props}: BadgeProps) {
-  const size = props.size ?? 'md';
-  const Comp = props.href ? 'a' : 'div';
-
-  const isClickable = props.onClick || props.href;
+function Badge({className, variant, state, size = 'md', icon: Icon, children, href, ...props}: BadgeProps) {
+  const Comp = href ? 'a' : 'div';
+  const isClickable = props.onClick || href;
 
   return (
     <Comp
+      data-slot="badge"
+      data-variant={variant}
+      href={href}
       className={cn(badgeVariants({variant, state}), className, {
-        'text-xs px-1.5': size === 'sm',
-        'text-sm px-2': size === 'md',
+        'px-1.5 text-xs': size === 'sm',
+        'px-2 text-sm': size === 'md',
         'hover:cursor-pointer': isClickable,
-        'hover:bg-primary/80': isClickable && variant === 'default',
-        'hover:bg-secondary/80': isClickable && (variant === 'secondary' || variant === 'outline'),
-        'hover:bg-destructive/80': isClickable && variant === 'destructive',
       })}
       {...props}
     >
-      {props.icon && (
-        <span className={cn({'mr-1.5': size === 'sm', 'mr-2': size === 'md'})}>
-          {
-            <props.icon
-              className={cn('h-4 w-4', {
-                'h-[14px] w-[14px]': size === 'sm',
-                'h-4 w-4': size === 'md',
-              })}
-            />
-          }
-        </span>
-      )}
+      {Icon && <Icon />}
       {children}
     </Comp>
   );

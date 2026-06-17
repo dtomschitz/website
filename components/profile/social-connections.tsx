@@ -1,5 +1,5 @@
 import {HTMLAttributes} from 'react';
-import {Github, Linkedin} from 'lucide-react';
+import {FaGithub, FaLinkedin} from 'react-icons/fa6';
 import {SocialConnection} from '@/types/social';
 import AnimatedLink from '@/components/ui/animated-link';
 
@@ -10,7 +10,7 @@ const socials: SocialConnection[] = [
       href: 'https://github.com/dtomschitz',
       name: 'dtomschitz',
     },
-    icon: <Github className="size-4" />,
+    icon: <FaGithub className="size-4" />,
   },
   {
     name: 'LinkedIn',
@@ -18,7 +18,7 @@ const socials: SocialConnection[] = [
       href: 'https://www.linkedin.com/in/david-tomschitz-10838a140',
       name: 'david-tomschitz',
     },
-    icon: <Linkedin className="size-4" />,
+    icon: <FaLinkedin className="size-4" />,
   },
 ];
 
