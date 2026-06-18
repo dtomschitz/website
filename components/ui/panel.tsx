@@ -32,7 +32,7 @@ function PanelTitle({className, asChild = false, ...props}: React.ComponentProps
   return (
     <Comp
       data-slot="panel-title"
-      className={cn('group/panel-title font-heading text-3xl font-semibold tracking-tight', className)}
+      className={cn('group/panel-title relative font-heading text-3xl font-semibold tracking-tight', className)}
       {...props}
     />
   );
