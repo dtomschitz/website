@@ -32,8 +32,8 @@ export const USER: User = {
 - Currently working as a Senior Consultant at [MHP](https://mhp.com), where I develop an end-to-end toolchain to deliver OTA updates for a well-known German automotive company.
 - On the side I build web & mobile apps and maintain the website and platform for my local handball club, [SV Vaihingen](https://svv-handball.de).
 `,
-  avatar: '/avatar.png',
-  ogImage: '/avatar.png',
+  avatar: '/avatar.jpeg',
+  ogImage: '/avatar.jpeg',
   timeZone: 'Europe/Berlin',
   keywords: ['David Tomschitz', 'dtomschitz', 'software engineer', 'full stack developer', 'Germany'],
   dateCreated: '2024-01-01', // YYYY-MM-DD
