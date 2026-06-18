@@ -1,4 +1,4 @@
-import {CodeXmlIcon} from 'lucide-react';
+import {CodeXmlIcon, FlaskConicalIcon, ServerCogIcon} from 'lucide-react';
 
 import type {Experience} from '@/types/experiences';
 
@@ -87,6 +87,7 @@ export const EXPERIENCES: Experience[] = [
       {
         id: 'hdm-research-assistant',
         title: 'Research Assistant',
+        icon: <FlaskConicalIcon />,
         employmentType: 'Part-time',
         employmentPeriod: {start: '11.2018', end: '02.2020'},
         description: 'Managed and maintained parts of the official website of the Hochschule der Medien Stuttgart.',
@@ -104,6 +105,7 @@ export const EXPERIENCES: Experience[] = [
       {
         id: 'svv-it-administrator',
         title: 'IT Administrator',
+        icon: <ServerCogIcon />,
         employmentType: 'Volunteer',
         employmentPeriod: {start: '2016'},
         description:

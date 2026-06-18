@@ -26,6 +26,7 @@ export const PROJECTS: Project[] = [
     title: 'Bucket Map',
     period: {start: '03.2021', end: '01.2022'},
     link: 'https://github.com/dtomschitz/bucket-map',
+    logo: '/project/bucket_map.png',
     description:
       'An iOS and Android app that lets users unlock new countries and save favorite places they might want to visit again.',
     skills: ['Flutter', 'Firebase'],
@@ -35,6 +36,7 @@ export const PROJECTS: Project[] = [
     title: 'Bar Brawler',
     period: {start: '02.2021', end: '07.2021'},
     link: 'https://github.com/dtomschitz/bar-brawler',
+    logo: '/project/barbrawler.png',
     description:
       'A brawler game where the player survives waves of enemies in a saloon by buying new weapons and having drinks at the bar.',
     skills: ['Unity', 'C#', 'Blender'],
@@ -44,6 +46,7 @@ export const PROJECTS: Project[] = [
     title: 'Bingo',
     period: {start: '06.2021', end: '07.2021'},
     link: 'https://github.com/dtomschitz/bingo-app',
+    logo: '/project/bingo.png',
     description: 'A student project building a bingo web app using React and Deno.',
     skills: ['React', 'Deno', 'MongoDB'],
   },

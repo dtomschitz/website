@@ -40,9 +40,6 @@ export const metadata: Metadata = {
     siteName: USER.displayName,
     title: USER.displayName,
     description: DESCRIPTION,
-    // NOTE: USER.ogImage is the square avatar. For richer wide previews,
-    // add a 1200×630 public/og.png and switch the twitter card below to
-    // "summary_large_image".
     images: [{url: USER.ogImage, alt: USER.displayName}],
   },
   twitter: {

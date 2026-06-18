@@ -1,5 +1,5 @@
-import {differenceInMonths, parse} from 'date-fns';
-import {ChevronsUpDownIcon, CodeXmlIcon, InfinityIcon} from 'lucide-react';
+import Image from 'next/image';
+import {ChevronsUpDownIcon, GraduationCapIcon, InfinityIcon} from 'lucide-react';
 
 import {cn} from '@/lib/utils';
 import Markdown from '@/components/markdown';
@@ -7,18 +7,20 @@ import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/
 import {Separator} from '@/components/ui/separator';
 import Tag from '@/components/ui/tag';
 import Prose from '@/components/ui/prose';
-import type {ExperiencePosition} from '@/types/experiences';
+import type {Education} from '@/types/education';
 
-export function ExperiencePositionItem({position}: {position: ExperiencePosition}) {
-  const {start, end} = position.employmentPeriod;
+import {formatDuration} from '../experience/experience-position-item';
+
+export function EducationItem({education}: {education: Education}) {
+  const {start, end} = education.period;
   const isOngoing = !end;
   const duration = formatDuration(start, end);
 
   return (
     <Collapsible
       className="group/experience-position relative"
-      defaultOpen={position.isExpanded}
-      disabled={!position.description}
+      defaultOpen={education.isExpanded}
+      disabled={!education.description}
     >
       <div
         className="pointer-events-none absolute bottom-0 left-3 hidden size-4 bg-background group-last/experience-position:flex"
@@ -36,18 +38,35 @@ export function ExperiencePositionItem({position}: {position: ExperiencePosition
         )}
       >
         <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
-          <div
-            className={cn(
-              'flex size-6 shrink-0 items-center justify-center rounded-lg',
-              'bg-muted text-muted-foreground',
-              'border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background',
-              "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-            )}
-          >
-            {position.icon ?? <CodeXmlIcon />}
-          </div>
+          {education.logo ? (
+            <div className="flex size-6 shrink-0 items-center justify-center">
+              <Image
+                src={education.logo}
+                alt={`${education.school} logo`}
+                width={24}
+                height={24}
+                className="size-6 object-contain"
+                unoptimized
+                aria-hidden
+              />
+            </div>
+          ) : (
+            <div
+              className={cn(
+                'flex size-6 shrink-0 items-center justify-center rounded-lg',
+                'bg-muted text-muted-foreground',
+                'border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background',
+                "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+              )}
+            >
+              {education.icon ?? <GraduationCapIcon />}
+            </div>
+          )}
 
-          <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
+          <div className="flex-1">
+            <h4 className="font-medium text-balance">{education.school}</h4>
+            <p className="text-sm text-muted-foreground">{education.degree}</p>
+          </div>
 
           <div className="shrink-0 text-muted-foreground group-data-[disabled]/experience-position:hidden [&_svg]:h-lh [&_svg]:w-4">
             <ChevronsUpDownIcon />
@@ -55,22 +74,8 @@ export function ExperiencePositionItem({position}: {position: ExperiencePosition
         </div>
 
         <dl className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
-          {position.employmentType && (
-            <>
-              <div>
-                <dt className="sr-only">Employment Type</dt>
-                <dd>{position.employmentType}</dd>
-              </div>
-              <Separator
-                className="data-[orientation=vertical]:h-4 data-[orientation=vertical]:self-center"
-                orientation="vertical"
-                aria-hidden
-              />
-            </>
-          )}
-
           <div>
-            <dt className="sr-only">Employment Period</dt>
+            <dt className="sr-only">Study Period</dt>
             <dd className="flex items-center gap-0.5 tabular-nums">
               <span>{start}</span>
               <span className="font-mono">—</span>
@@ -99,16 +104,16 @@ export function ExperiencePositionItem({position}: {position: ExperiencePosition
       </CollapsibleTrigger>
 
       <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-        {position.description && (
+        {education.description && (
           <Prose className="pt-2 pl-9">
-            <Markdown>{position.description}</Markdown>
+            <Markdown>{education.description}</Markdown>
           </Prose>
         )}
       </CollapsibleContent>
 
-      {Array.isArray(position.skills) && position.skills.length > 0 && (
+      {Array.isArray(education.skills) && education.skills.length > 0 && (
         <ul className="flex flex-wrap gap-1.5 pt-3 pl-9">
-          {position.skills.map((skill, index) => (
+          {education.skills.map((skill, index) => (
             <li key={index} className="flex">
               <Tag>{skill}</Tag>
             </li>
@@ -117,36 +122,4 @@ export function ExperiencePositionItem({position}: {position: ExperiencePosition
       )}
     </Collapsible>
   );
-}
-
-export function formatDuration(start: string, end?: string): string {
-  const startHasMonth = start.includes('.');
-  const endHasMonth = end ? end.includes('.') : true;
-
-  // Both year-only: granularity is years, no month arithmetic needed.
-  if (!startHasMonth && end && !endHasMonth) {
-    const years = parseInt(end, 10) - parseInt(start, 10);
-    if (years <= 0) return '';
-    return `${years}y`;
-  }
-
-  const startDate = parsePeriodDate(start, 'first');
-  const endDate = end ? parsePeriodDate(end, 'last') : new Date();
-
-  // +1 to count both the start and end months inclusively.
-  const totalMonths = differenceInMonths(endDate, startDate) + 1;
-  if (totalMonths <= 0) return '';
-  if (totalMonths < 12) return `${totalMonths}m`;
-
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-  if (months === 0) return `${years}y`;
-  return `${years}y ${months}m`;
-}
-
-function parsePeriodDate(str: string, fallbackMonth: 'first' | 'last'): Date {
-  if (str.includes('.')) {
-    return parse(str, 'MM.yyyy', new Date());
-  }
-  return parse(`${fallbackMonth === 'last' ? '12' : '01'}.${str}`, 'MM.yyyy', new Date());
 }
