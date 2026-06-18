@@ -1,29 +1,54 @@
-import {Metadata} from 'next';
+import type { Metadata } from "next";
 
-import Experiences from '@/components/experience/Experiences';
-import ProfileSection from '@/components/profile/profile-section';
-import ProjectsSection from '@/components/projects/projects-section';
-import SkillsSection from '@/components/skill/skills-section';
+import { cn } from "@/lib/utils";
+import { Hello } from "@/components/about/hello";
+import { Experiences } from "@/components/experience/experiences";
+import { Overview } from "@/components/profile/overview";
+import { ProfileHeader } from "@/components/profile/profile-header";
+import { SocialLinks } from "@/components/profile/social-links";
+import { Projects } from "@/components/projects/projects";
+import { TechStack } from "@/components/skill/tech-stack";
 
 export const metadata: Metadata = {
-  title: 'David Tomschitz',
+  alternates: {
+    canonical: "/",
+  },
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="bg-background min-h-screen">
-      <div className="container max-w-screen-lg mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <aside className="max-w-screen-sm md:col-span-1">
-            <ProfileSection />
-            <SkillsSection />
-          </aside>
-          <main className="md:col-span-2">
-            <ProjectsSection />
-            <Experiences />
-          </main>
-        </div>
+    <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
+      <div className="mx-auto md:max-w-3xl">
+        <ProfileHeader />
+        <Separator />
+
+        <Overview />
+        <SocialLinks />
+        <Separator />
+
+        <Hello />
+        <Separator />
+
+        <TechStack />
+        <Separator />
+
+        <Experiences />
+        <Separator />
+
+        <Projects />
+        <Separator />
       </div>
     </div>
+  );
+}
+
+function Separator({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "stripe-divider h-(--separator-height) w-full border-x border-line",
+        className
+      )}
+    />
   );
 }
