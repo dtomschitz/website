@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(geistSans.variable, geistMono.variable, 'antialiased')}>
+      <body className={cn(geistSans.variable, geistMono.variable, 'antialiased', 'overflow-x-clip')}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
