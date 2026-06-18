@@ -59,7 +59,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(geistSans.variable, geistMono.variable, 'antialiased', 'overflow-x-clip')}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <main className="max-w-screen overflow-x-clip">{children}</main>
+          </TooltipProvider>
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />
