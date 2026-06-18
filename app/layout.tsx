@@ -1,34 +1,56 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, IBM_Plex_Serif } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
+import type {Metadata} from 'next';
+import {Geist, Geist_Mono} from 'next/font/google';
+import {SpeedInsights} from '@vercel/speed-insights/next';
+import {Analytics} from '@vercel/analytics/react';
 
-import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import {cn} from '@/lib/utils';
+import {USER} from '@/data/user';
+import {ThemeProvider} from '@/components/theme-provider';
+import {TooltipProvider} from '@/components/ui/tooltip';
 
-import "./globals.css";
+import './globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
-const ibmPlexSerif = IBM_Plex_Serif({
-  variable: "--font-ibm-plex-serif",
-  weight: ["400"],
-  subsets: ["latin"],
-});
+const DESCRIPTION =
+  'David Tomschitz — Full Stack Software Engineer from Germany, building mobile and web applications.';
 
 export const metadata: Metadata = {
-  title: "David Tomschitz",
-  description:
-    "David Tomschitz — Full Stack Software Engineer from Germany, building mobile and web applications.",
+  metadataBase: new URL(USER.website),
+  title: {
+    default: USER.displayName,
+    template: `%s — ${USER.displayName}`,
+  },
+  description: DESCRIPTION,
+  keywords: USER.keywords,
+  authors: [{name: USER.displayName, url: USER.website}],
+  creator: USER.displayName,
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: USER.website,
+    siteName: USER.displayName,
+    title: USER.displayName,
+    description: DESCRIPTION,
+    // NOTE: USER.ogImage is the square avatar. For richer wide previews,
+    // add a 1200×630 public/og.png and switch the twitter card below to
+    // "summary_large_image".
+    images: [{url: USER.ogImage, alt: USER.displayName}],
+  },
+  twitter: {
+    card: 'summary',
+    title: USER.displayName,
+    description: DESCRIPTION,
+    images: [USER.ogImage],
+  },
 };
 
 export default function RootLayout({
@@ -38,14 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          geistSans.variable,
-          geistMono.variable,
-          ibmPlexSerif.variable,
-          "antialiased"
-        )}
-      >
+      <body className={cn(geistSans.variable, geistMono.variable, 'antialiased')}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>

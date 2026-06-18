@@ -1,0 +1,18 @@
+# Build output
+.next/
+out/
+build/
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Vendored agent skills (not our source)
+.agents/
+
+# Static assets
+public/
+
+# Generated
+next-env.d.ts
+*.lock

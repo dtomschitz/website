@@ -1,17 +1,12 @@
-"use client";
+'use client';
 
-import { GlobeIcon } from "lucide-react";
+import {GlobeIcon} from 'lucide-react';
 
-import CopyButton from "@/components/ui/copy-button";
+import CopyButton from '@/components/ui/copy-button';
 
-import {
-  IntroItem,
-  IntroItemContent,
-  IntroItemIcon,
-  IntroItemLink,
-} from "./intro-item";
+import {IntroItem, IntroItemContent, IntroItemIcon, IntroItemLink} from './intro-item';
 
-export function WebsiteItem({ website }: { website: string }) {
+export function WebsiteItem({website}: {website: string}) {
   return (
     <IntroItem className="group">
       <IntroItemIcon>
@@ -20,7 +15,7 @@ export function WebsiteItem({ website }: { website: string }) {
 
       <IntroItemContent>
         <IntroItemLink href={website} aria-label={`Website: ${website}`}>
-          {website.replace(/^https?:\/\//, "")}
+          {website.replace(/^https?:\/\//, '')}
         </IntroItemLink>
       </IntroItemContent>
 

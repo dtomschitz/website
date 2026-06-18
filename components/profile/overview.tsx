@@ -1,18 +1,13 @@
-import { MapPinIcon } from "lucide-react";
+import {MapPinIcon} from 'lucide-react';
 
-import { USER } from "@/data/user";
-import { Panel, PanelContent } from "@/components/ui/panel";
+import {USER} from '@/data/user';
+import {Panel, PanelContent} from '@/components/ui/panel';
 
-import { CurrentLocalTimeItem } from "./current-local-time-item";
-import { EmailItem } from "./email-item";
-import { WebsiteItem } from "./website-item";
-import {
-  IntroItem,
-  IntroItemContent,
-  IntroItemIcon,
-  IntroItemLink,
-} from "./intro-item";
-import { JobItem } from "./job-item";
+import {CurrentLocalTimeItem} from './current-local-time-item';
+import {EmailItem} from './email-item';
+import {WebsiteItem} from './website-item';
+import {IntroItem, IntroItemContent, IntroItemIcon, IntroItemLink} from './intro-item';
+import {JobItem} from './job-item';
 
 export function Overview() {
   return (

@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { MailIcon } from "lucide-react";
+import {useSyncExternalStore} from 'react';
+import {MailIcon} from 'lucide-react';
 
-import CopyButton from "@/components/ui/copy-button";
+import CopyButton from '@/components/ui/copy-button';
 
-import {
-  IntroItem,
-  IntroItemContent,
-  IntroItemIcon,
-  IntroItemLink,
-} from "./intro-item";
+import {IntroItem, IntroItemContent, IntroItemIcon, IntroItemLink} from './intro-item';
 
-export function EmailItem({ emailB64 }: { emailB64: string }) {
-  const [email, setEmail] = useState("");
+// Never call subscribe's callback: the decoded value is stable per render.
+const noopSubscribe = () => () => {};
 
-  useEffect(() => {
-    setEmail(atob(emailB64));
-  }, [emailB64]);
+export function EmailItem({emailB64}: {emailB64: string}) {
+  // Decode the email on the client only — it stays out of the server-rendered
+  // HTML so scrapers don't see a plaintext address. No setState-in-effect.
+  const email = useSyncExternalStore(
+    noopSubscribe,
+    () => atob(emailB64),
+    () => '',
+  );
 
   return (
     <IntroItem className="group">
@@ -26,10 +26,7 @@ export function EmailItem({ emailB64 }: { emailB64: string }) {
       </IntroItemIcon>
 
       <IntroItemContent className="flex">
-        <IntroItemLink
-          href={email ? `mailto:${email}` : ""}
-          suppressHydrationWarning
-        >
+        <IntroItemLink href={email ? `mailto:${email}` : undefined} suppressHydrationWarning>
           {email}
         </IntroItemLink>
       </IntroItemContent>

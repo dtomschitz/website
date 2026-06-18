@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "./gradient-border.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './gradient-border.css';
 
 @plugin "@tailwindcss/typography";
 
@@ -50,10 +50,9 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-ibm-plex-serif);
   --font-heading: var(--font-geist-sans);
 
-  --default-mono-font-feature-settings: "ss11" 1, "zero" 1, "tnum" 1;
+  --default-mono-font-feature-settings: 'ss11' 1, 'zero' 1, 'tnum' 1;
 
   --animate-collapsible-down: collapsible-down 0.2s ease-out;
   --animate-collapsible-up: collapsible-up 0.2s ease-out;
@@ -186,7 +185,7 @@
 @utility screen-line-top {
   @apply relative;
   &:before {
-    content: "";
+    content: '';
     @apply absolute top-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
   }
 }
@@ -194,7 +193,7 @@
 @utility screen-line-bottom {
   @apply relative;
   &:after {
-    content: "";
+    content: '';
     @apply absolute bottom-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
   }
 }
@@ -202,7 +201,7 @@
 @utility screen-dashed-line-bottom {
   @apply screen-line-bottom;
   &:after {
-    content: "";
+    content: '';
     @apply bg-inherit bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
   }
 }
@@ -223,7 +222,7 @@
 @utility stripe-divider {
   @apply relative h-8;
   &:before {
-    content: "";
+    content: '';
     @apply absolute left-[-100vw] -z-1 h-full w-[200vw] diagonal-stripes;
   }
 }

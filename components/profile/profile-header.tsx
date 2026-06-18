@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { USER } from "@/data/user";
+import {USER} from '@/data/user';
 
-import { FlipSentences } from "./flip-sentences";
-import { IsometricMark } from "./isometric-mark";
+import {FlipSentences} from './flip-sentences';
+import {IsometricMark} from './isometric-mark';
 
 export function ProfileHeader() {
   return (
@@ -24,7 +24,6 @@ export function ProfileHeader() {
               alt={USER.displayName}
               width={128}
               height={128}
-              quality={100}
               priority
               draggable={false}
             />
@@ -35,15 +34,10 @@ export function ProfileHeader() {
       <div className="flex flex-col">
         <div className="z-1 mt-auto border-t border-line">
           <div className="flex items-center gap-2 pl-4">
-            <h1 className="-translate-y-px text-3xl font-semibold tracking-tight">
-              {USER.displayName}
-            </h1>
+            <h1 className="-translate-y-px text-3xl font-semibold tracking-tight">{USER.displayName}</h1>
           </div>
 
-          <FlipSentences
-            sentences={USER.flipSentences}
-            className="h-12.5 border-t border-line py-1 pl-4 sm:h-9"
-          />
+          <FlipSentences sentences={USER.flipSentences} className="h-12.5 border-t border-line py-1 pl-4 sm:h-9" />
         </div>
       </div>
     </div>

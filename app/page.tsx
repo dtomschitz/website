@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
+import type {Metadata} from 'next';
 
-import { cn } from "@/lib/utils";
-import { Hello } from "@/components/about/hello";
-import { Experiences } from "@/components/experience/experiences";
-import { Overview } from "@/components/profile/overview";
-import { ProfileHeader } from "@/components/profile/profile-header";
-import { SocialLinks } from "@/components/profile/social-links";
-import { Projects } from "@/components/projects/projects";
-import { TechStack } from "@/components/skill/tech-stack";
+import {cn} from '@/lib/utils';
+import {Hello} from '@/components/about/hello';
+import {Experiences} from '@/components/experience/experiences';
+import {Overview} from '@/components/profile/overview';
+import {ProfileHeader} from '@/components/profile/profile-header';
+import {SocialLinks} from '@/components/profile/social-links';
+import {Projects} from '@/components/projects/projects';
+import {TechStack} from '@/components/skill/tech-stack';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/",
+    canonical: '/',
   },
 };
 
@@ -42,13 +42,6 @@ export default function HomePage() {
   );
 }
 
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "stripe-divider h-(--separator-height) w-full border-x border-line",
-        className
-      )}
-    />
-  );
+function Separator({className}: {className?: string}) {
+  return <div className={cn('stripe-divider h-(--separator-height) w-full border-x border-line', className)} />;
 }

@@ -1,15 +1,12 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import type { Experience } from "@/types/experiences";
+import type {Experience} from '@/types/experiences';
 
-import { ExperiencePositionItem } from "./experience-position-item";
+import {ExperiencePositionItem} from './experience-position-item';
 
-export function ExperienceItem({ experience }: { experience: Experience }) {
+export function ExperienceItem({experience}: {experience: Experience}) {
   return (
-    <div
-      id={`experience-${experience.id}`}
-      className="group/experience screen-line-bottom scroll-mt-14 space-y-4 py-4"
-    >
+    <div id={`experience-${experience.id}`} className="group/experience screen-line-bottom scroll-mt-14 space-y-4 py-4">
       <div className="flex items-center gap-3">
         <div className="flex size-6 shrink-0 items-center justify-center select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-5">
           {experience.companyLogo ? (
@@ -18,26 +15,18 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
               alt={`${experience.companyName} logo`}
               width={24}
               height={24}
-              quality={100}
               className="rounded-full"
               unoptimized
               aria-hidden
             />
           ) : (
-            (experience.companyIcon ?? (
-              <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
-            ))
+            (experience.companyIcon ?? <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />)
           )}
         </div>
 
         <h3 className="text-lg leading-snug font-semibold">
           {experience.companyWebsite ? (
-            <a
-              className="link"
-              href={experience.companyWebsite}
-              target="_blank"
-              rel="noopener"
-            >
+            <a className="link" href={experience.companyWebsite} target="_blank" rel="noopener">
               {experience.companyName}
             </a>
           ) : (

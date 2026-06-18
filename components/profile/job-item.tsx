@@ -1,11 +1,6 @@
-import { BriefcaseBusinessIcon, CodeXmlIcon, LightbulbIcon } from "lucide-react";
+import {BriefcaseBusinessIcon, CodeXmlIcon, LightbulbIcon} from 'lucide-react';
 
-import {
-  IntroItem,
-  IntroItemContent,
-  IntroItemIcon,
-  IntroItemLink,
-} from "./intro-item";
+import {IntroItem, IntroItemContent, IntroItemIcon, IntroItemLink} from './intro-item';
 
 type JobItemProps = {
   title: string;
@@ -14,12 +9,7 @@ type JobItemProps = {
   experienceId?: string;
 };
 
-export function JobItem({
-  title,
-  company,
-  website,
-  experienceId,
-}: JobItemProps) {
+export function JobItem({title, company, website, experienceId}: JobItemProps) {
   return (
     <IntroItem className="sm:col-span-2">
       <IntroItemIcon>{getJobIcon(title)}</IntroItemIcon>
@@ -28,9 +18,7 @@ export function JobItem({
         {title} <span aria-label="at">@</span>
         <IntroItemLink
           className="ml-0.5 font-medium"
-          {...(experienceId
-            ? { href: `#experience-${experienceId}`, target: "_self", rel: "" }
-            : { href: website })}
+          {...(experienceId ? {href: `#experience-${experienceId}`, target: '_self', rel: ''} : {href: website})}
         >
           {company}
         </IntroItemLink>

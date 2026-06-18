@@ -3,7 +3,7 @@
  * profile header. Swap with your own logo/SVG when ready.
  */
 export function IsometricMark() {
-  const patternId = "iso-hatch";
+  const patternId = 'iso-hatch';
 
   return (
     <svg
@@ -14,19 +14,8 @@ export function IsometricMark() {
       aria-hidden
     >
       <defs>
-        <pattern
-          id={patternId}
-          x="0"
-          y="0"
-          width="10"
-          height="10"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M-1 1l2 -2M0 10l10 -10M9 11l2 -2"
-            stroke="var(--hatch)"
-            strokeWidth="1"
-          />
+        <pattern id={patternId} x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M-1 1l2 -2M0 10l10 -10M9 11l2 -2" stroke="var(--hatch)" strokeWidth="1" />
         </pattern>
       </defs>
 
@@ -39,11 +28,7 @@ export function IsometricMark() {
       {/* isometric cube */}
       <g>
         {/* top face */}
-        <path
-          d="M278 70L388 125L278 180L168 125Z"
-          className="fill-background stroke-line"
-          strokeWidth="1"
-        />
+        <path d="M278 70L388 125L278 180L168 125Z" className="fill-background stroke-line" strokeWidth="1" />
         {/* left face */}
         <path
           d="M168 125L278 180L278 290L168 235Z"

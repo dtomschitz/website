@@ -1,16 +1,11 @@
-import CollapsibleList from "@/components/ui/collapsible-list";
-import {
-  Panel,
-  PanelHeader,
-  PanelTitle,
-  PanelTitleSup,
-} from "@/components/ui/panel";
-import { PanelTitleCopy } from "@/components/ui/panel-title-copy";
-import { PROJECTS } from "@/data/projects";
+import CollapsibleList from '@/components/ui/collapsible-list';
+import {Panel, PanelHeader, PanelTitle, PanelTitleSup} from '@/components/ui/panel';
+import {PanelTitleCopy} from '@/components/ui/panel-title-copy';
+import {PROJECTS} from '@/data/projects';
 
-import { ProjectItem } from "./project-item";
+import {ProjectItem} from './project-item';
 
-const ID = "projects";
+const ID = 'projects';
 
 export function Projects() {
   return (

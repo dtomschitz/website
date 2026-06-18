@@ -1,34 +1,15 @@
-import Image from "next/image";
-import {
-  BoxIcon,
-  ChevronsUpDownIcon,
-  InfinityIcon,
-  LinkIcon,
-} from "lucide-react";
+import Image from 'next/image';
+import {BoxIcon, ChevronsUpDownIcon, InfinityIcon, LinkIcon} from 'lucide-react';
 
-import Markdown from "@/components/markdown";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import Prose from "@/components/ui/prose";
-import Tag from "@/components/ui/tag";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import type { Project } from "@/types/projects";
+import Markdown from '@/components/markdown';
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/ui/collapsible';
+import Prose from '@/components/ui/prose';
+import Tag from '@/components/ui/tag';
+import {Tooltip, TooltipContent, TooltipTrigger} from '@/components/ui/tooltip';
+import type {Project} from '@/types/projects';
 
-export function ProjectItem({
-  className,
-  project,
-}: {
-  className?: string;
-  project: Project;
-}) {
-  const { start, end } = project.period;
+export function ProjectItem({className, project}: {className?: string; project: Project}) {
+  const {start, end} = project.period;
   const isOngoing = !end;
   const isSinglePeriod = end === start;
 
@@ -41,7 +22,6 @@ export function ProjectItem({
             alt={project.title}
             width={32}
             height={32}
-            quality={100}
             className="mx-4 flex size-6 shrink-0 select-none"
             unoptimized
             aria-hidden
@@ -54,9 +34,7 @@ export function ProjectItem({
 
         <div className="flex flex-1 items-center gap-2 border-l border-dashed border-line p-4 pr-2">
           <CollapsibleTrigger className="flex flex-1 flex-col text-left outline-none">
-            <h3 className="mb-1 leading-snug font-medium text-balance">
-              {project.title}
-            </h3>
+            <h3 className="mb-1 leading-snug font-medium text-balance">{project.title}</h3>
 
             <dl className="text-sm text-muted-foreground">
               <dt className="sr-only">Period</dt>
@@ -66,10 +44,7 @@ export function ProjectItem({
                   <>
                     <span className="font-mono">—</span>
                     {isOngoing ? (
-                      <InfinityIcon
-                        className="size-4.5 translate-y-[0.5px]"
-                        aria-label="Present"
-                      />
+                      <InfinityIcon className="size-4.5 translate-y-[0.5px]" aria-label="Present" />
                     ) : (
                       <span>{end}</span>
                     )}

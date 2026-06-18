@@ -1,30 +1,30 @@
-import { MailIcon } from "lucide-react";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { SiGithub } from "react-icons/si";
+import {MailIcon} from 'lucide-react';
+import {FaLinkedinIn} from 'react-icons/fa6';
+import {SiGithub} from 'react-icons/si';
 
-import type { SocialLink } from "@/types/social-links";
+import type {SocialLink} from '@/types/social-links';
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    name: "github",
+    name: 'github',
     icon: <SiGithub />,
-    title: "GitHub",
-    handle: "dtomschitz",
-    href: "https://github.com/dtomschitz",
+    title: 'GitHub',
+    handle: 'dtomschitz',
+    href: 'https://github.com/dtomschitz',
   },
   {
-    name: "linkedin",
+    name: 'linkedin',
     icon: <FaLinkedinIn />,
-    title: "LinkedIn",
-    handle: "david-tomschitz",
-    href: "https://www.linkedin.com/in/david-tomschitz-10838a140",
+    title: 'LinkedIn',
+    handle: 'david-tomschitz',
+    href: 'https://www.linkedin.com/in/david-tomschitz-10838a140',
   },
   {
-    name: "email",
+    name: 'email',
     icon: <MailIcon />,
-    title: "Email",
-    handle: "david@tomschitz.de",
-    href: "mailto:david@tomschitz.de",
+    title: 'Email',
+    handle: 'david@tomschitz.de',
+    href: 'mailto:david@tomschitz.de',
   },
 ];
 
