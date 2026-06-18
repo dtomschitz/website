@@ -26,6 +26,7 @@ export function ProfileHeader() {
               height={128}
               quality={100}
               priority
+              draggable={false}
             />
           </div>
         </div>
