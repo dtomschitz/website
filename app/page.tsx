@@ -2,11 +2,11 @@ import type {Metadata} from 'next';
 
 import {cn} from '@/lib/utils';
 import {Hello} from '@/components/about/hello';
+import {Contact} from '@/components/contact/contact';
 import {Education} from '@/components/education/education';
 import {Experiences} from '@/components/experience/experiences';
 import {Overview} from '@/components/profile/overview';
 import {ProfileHeader} from '@/components/profile/profile-header';
-import {SocialLinks} from '@/components/profile/social-links';
 import {Projects} from '@/components/projects/projects';
 import {TechStack} from '@/components/skill/tech-stack';
 
@@ -24,10 +24,12 @@ export default function HomePage() {
         <Separator />
 
         <Overview />
-        <SocialLinks />
         <Separator />
 
         <Hello />
+        <Separator />
+
+        <Contact />
         <Separator />
 
         <TechStack />

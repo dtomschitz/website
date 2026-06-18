@@ -6,6 +6,7 @@ import {Analytics} from '@vercel/analytics/react';
 import {cn} from '@/lib/utils';
 import {USER} from '@/data/user';
 import {ThemeProvider} from '@/components/theme-provider';
+import {ThemeToggle} from '@/components/theme-toggle';
 import {TooltipProvider} from '@/components/ui/tooltip';
 
 import './globals.css';
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className={cn(geistSans.variable, geistMono.variable, 'antialiased', 'overflow-x-clip')}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <TooltipProvider>
+            <ThemeToggle className="fixed top-4 right-4 z-50" />
             <main className="max-w-screen overflow-x-clip">{children}</main>
           </TooltipProvider>
         </ThemeProvider>

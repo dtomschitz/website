@@ -22,7 +22,7 @@ const THEME_LABEL: Record<Theme, string> = {
 // theme-dependent icon so server/client markup match. No setState-in-effect.
 const noopSubscribe = () => () => {};
 
-export function ThemeToggle() {
+export function ThemeToggle({className}: {className?: string}) {
   const {theme, setTheme} = useTheme();
   const mounted = useSyncExternalStore(
     noopSubscribe,
@@ -51,6 +51,7 @@ export function ThemeToggle() {
             'dark:gradient-border-from-foreground/20 dark:gradient-border-to-foreground/30 dark:gradient-border-via-foreground/6',
             'bg-linear-to-t from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-zinc-800',
             "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-foreground/80 [&_svg:not([class*='size-'])]:size-5",
+            className,
           )}
         >
           {mounted ? (
