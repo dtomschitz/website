@@ -1,6 +1,22 @@
+import { CodeXmlIcon } from "lucide-react";
+
 import type { Experience } from "@/types/experiences";
 
 export const EXPERIENCES: Experience[] = [
+  {
+    id: "freelance",
+    companyName: "Freelance",
+    companyIcon: <CodeXmlIcon />,
+    isCurrentEmployer: true,
+    positions: [
+      {
+        id: "freelance-fullstack",
+        title: "Full-Stack Software Engineer",
+        employmentType: "Freelance",
+        employmentPeriod: { start: "06.2026" },
+      },
+    ],
+  },
   {
     id: "mhp",
     companyName: "MHP Management und IT Beratung GmbH",
