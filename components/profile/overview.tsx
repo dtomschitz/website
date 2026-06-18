@@ -1,10 +1,11 @@
-import { LinkIcon, MapPinIcon, MarsIcon } from "lucide-react";
+import { MapPinIcon } from "lucide-react";
 
 import { USER } from "@/data/user";
 import { Panel, PanelContent } from "@/components/ui/panel";
 
 import { CurrentLocalTimeItem } from "./current-local-time-item";
 import { EmailItem } from "./email-item";
+import { WebsiteItem } from "./website-item";
 import {
   IntroItem,
   IntroItemContent,
@@ -12,10 +13,6 @@ import {
   IntroItemLink,
 } from "./intro-item";
 import { JobItem } from "./job-item";
-
-function formatWebsite(url: string) {
-  return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
-}
 
 export function Overview() {
   return (
@@ -33,6 +30,12 @@ export function Overview() {
           />
         ))}
 
+        <EmailItem emailB64={USER.emailB64} />
+
+        <CurrentLocalTimeItem timeZone={USER.timeZone} />
+
+        <WebsiteItem website={USER.website} />
+
         <IntroItem>
           <IntroItemIcon>
             <MapPinIcon />
@@ -44,33 +47,6 @@ export function Overview() {
             >
               {USER.address}
             </IntroItemLink>
-          </IntroItemContent>
-        </IntroItem>
-
-        <CurrentLocalTimeItem timeZone={USER.timeZone} />
-
-        <EmailItem emailB64={USER.emailB64} />
-
-        <IntroItem>
-          <IntroItemIcon>
-            <LinkIcon />
-          </IntroItemIcon>
-          <IntroItemContent>
-            <IntroItemLink
-              href={USER.website}
-              aria-label={`Personal website: ${formatWebsite(USER.website)}`}
-            >
-              {formatWebsite(USER.website)}
-            </IntroItemLink>
-          </IntroItemContent>
-        </IntroItem>
-
-        <IntroItem>
-          <IntroItemIcon>
-            <MarsIcon />
-          </IntroItemIcon>
-          <IntroItemContent aria-label={`Pronouns: ${USER.pronouns}`}>
-            {USER.pronouns}
           </IntroItemContent>
         </IntroItem>
       </PanelContent>

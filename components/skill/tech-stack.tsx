@@ -1,4 +1,4 @@
-import { TECH_STACK } from "@/data/tech-stack";
+import { TECH_STACK, TECH_STACK_CATEGORIES } from "@/data/tech-stack";
 import type { TechStack as TechStackType } from "@/types/tech-stack";
 import { Panel, PanelHeader, PanelTitle } from "@/components/ui/panel";
 import { PanelTitleCopy } from "@/components/ui/panel-title-copy";
@@ -21,7 +21,7 @@ export function TechStack() {
           aria-hidden
         />
 
-        {Object.entries(groupByCategory(TECH_STACK)).map(
+        {groupByCategory(TECH_STACK).map(
           ([category, items], index) => {
             const categoryId = `${ID}-${category
               .toLowerCase()
@@ -75,11 +75,16 @@ export function TechStack() {
 
 function groupByCategory(
   items: TechStackType[]
-): Record<string, TechStackType[]> {
-  return items.reduce<Record<string, TechStackType[]>>((acc, item) => {
+): [string, TechStackType[]][] {
+  const groups = items.reduce<Record<string, TechStackType[]>>((acc, item) => {
     for (const category of item.categories) {
       (acc[category] ??= []).push(item);
     }
     return acc;
   }, {});
+
+  const order = TECH_STACK_CATEGORIES as readonly string[];
+  return Object.entries(groups).sort(
+    ([a], [b]) => order.indexOf(a) - order.indexOf(b)
+  );
 }

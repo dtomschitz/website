@@ -5,7 +5,13 @@ import { ClockIcon } from "lucide-react";
 
 import { IntroItem, IntroItemContent, IntroItemIcon } from "./intro-item";
 
-export function CurrentLocalTimeItem({ timeZone }: { timeZone: string }) {
+export function CurrentLocalTimeItem({
+  className,
+  timeZone,
+}: {
+  className?: string;
+  timeZone: string;
+}) {
   const [time, setTime] = useState("");
   const [diff, setDiff] = useState("");
 
@@ -44,7 +50,7 @@ export function CurrentLocalTimeItem({ timeZone }: { timeZone: string }) {
   }, [timeZone]);
 
   return (
-    <IntroItem>
+    <IntroItem className={className}>
       <IntroItemIcon>
         <ClockIcon />
       </IntroItemIcon>

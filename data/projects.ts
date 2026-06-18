@@ -1,12 +1,10 @@
 import type { Project } from "@/types/projects";
 
-// NOTE(david): project `period` dates are placeholders — adjust to the real
-// start/end months. Add per-project logos under /public/project and set `logo`.
 export const PROJECTS: Project[] = [
   {
     id: "movie-night",
     title: "Movie Night",
-    period: { start: "01.2023" },
+    period: { start: "2023", end: "2023" },
     link: "https://movie-night.up.railway.app/",
     description:
       "A web app where friends vote together on a curated list of movies to watch on a chosen date. Built on a RESTful API with WebSockets for real-time communication between server and clients.",
@@ -26,7 +24,7 @@ export const PROJECTS: Project[] = [
   {
     id: "bucket-map",
     title: "Bucket Map",
-    period: { start: "06.2021" },
+    period: { start: "03.2021", end: "01.2022" },
     link: "https://github.com/dtomschitz/bucket-map",
     description:
       "An iOS and Android app that lets users unlock new countries and save favorite places they might want to visit again.",
@@ -35,7 +33,7 @@ export const PROJECTS: Project[] = [
   {
     id: "bar-brawler",
     title: "Bar Brawler",
-    period: { start: "01.2020" },
+    period: { start: "02.2021", end: "07.2021" },
     link: "https://github.com/dtomschitz/bar-brawler",
     description:
       "A brawler game where the player survives waves of enemies in a saloon by buying new weapons and having drinks at the bar.",
@@ -44,9 +42,8 @@ export const PROJECTS: Project[] = [
   {
     id: "bingo",
     title: "Bingo",
-    period: { start: "06.2020" },
-    // TODO(david): point this at the real Bingo repository
-    link: "https://github.com/dtomschitz",
+    period: { start: "06.2021", end: "07.2021" },
+    link: "https://github.com/dtomschitz/bingo-app",
     description:
       "A student project building a bingo web app using React and Deno.",
     skills: ["React", "Deno", "MongoDB"],
