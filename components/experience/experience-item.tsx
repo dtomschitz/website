@@ -36,8 +36,8 @@ export function ExperienceItem({experience}: {experience: Experience}) {
 
         {experience.isCurrentEmployer && (
           <span className="relative flex items-center justify-center">
-            <span className="absolute inline-flex size-3 animate-ping rounded-full bg-info opacity-50" />
-            <span className="relative inline-flex size-2 rounded-full bg-info" />
+            <span className="absolute inline-flex size-3 animate-ping rounded-full bg-foreground opacity-50" />
+            <span className="relative inline-flex size-2 rounded-full bg-foreground" />
             <span className="sr-only">Current Employer</span>
           </span>
         )}

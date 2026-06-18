@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
     period: {start: '2023', end: '2023'},
     link: 'https://movie-night.up.railway.app/',
     description:
-      'A web app where friends vote together on a curated list of movies to watch on a chosen date. Built on a RESTful API with WebSockets for real-time communication between server and clients.',
+      'A web app where friends vote together on a curated list of movies to watch on a chosen date. Built on a RESTful API with a WebSocket connection for real-time communication between server and clients.',
     skills: ['Next.js', 'Go', 'MongoDB', 'Tailwind CSS', 'WebSockets'],
     isExpanded: true,
   },
@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     link: 'https://svv-handball.de/',
     logo: '/project/svv.png',
     description:
-      'The website and API for the handball club SV Vaihingen, together with a custom-tailored content management system.',
+      'Developed the website and API for the handball club SV Vaihingen, including a custom-tailored content management system.',
     skills: ['Next.js', 'Nest.js', 'MongoDB', 'Prisma', 'Tailwind CSS'],
   },
   {

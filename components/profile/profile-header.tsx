@@ -3,17 +3,11 @@ import Image from 'next/image';
 import {USER} from '@/data/user';
 
 import {FlipSentences} from './flip-sentences';
-import {IsometricMark} from './isometric-mark';
 
 export function ProfileHeader() {
   return (
     <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
-      <figure className="relative col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
-        <IsometricMark />
-        <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-xs leading-none text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
-          FIG_001
-        </figcaption>
-      </figure>
+      <figure className="relative col-span-2 min-h-32 p-2 sm:col-span-1 sm:col-start-2 sm:min-h-44 sm:p-4" />
 
       <div className="flex flex-col sm:row-span-2 sm:row-start-1">
         <div className="screen-line-top mt-auto shrink-0 border-r border-line">
